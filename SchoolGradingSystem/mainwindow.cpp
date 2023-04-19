@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "teacherwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,13 +27,18 @@ MainWindow::~MainWindow()
 void MainWindow::on_SignInButton_clicked()
 {
     if (submitReady) {
-        if (ui->studentRadio->isChecked()) {
+        if (ui->studentRadio->isChecked()) { // If student selected
             return;
-        } else {
+        } else { // If teacher selected
+            qDebug() << "Teacher login";
+            TeacherWindow *tw = new TeacherWindow(nullptr, new Teacher());
+            tw->show();
+            this->hide();
             return;
         }
     } else {
         showLogin();
+        submitReady = true;
     }
 }
 
@@ -50,7 +56,7 @@ void MainWindow::hideLogin()
 void MainWindow::showLogin()
 {
     ui->Title->setGeometry(375, 0, 850, 180);
-    ui->SignInButton->setGeometry(725, 800, 150, 75);
+    ui->SignInButton->setGeometry(725, 700, 150, 75);
     ui->studentRadio->show();
     ui->teacherRadio->show();
     ui->usernameLabel->show();

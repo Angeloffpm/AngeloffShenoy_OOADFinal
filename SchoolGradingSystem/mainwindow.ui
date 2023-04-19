@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="SignInButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>725</x>
@@ -32,7 +35,7 @@
      <string>Sign In</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
       <x>375</x>
@@ -48,6 +51,94 @@
     </property>
     <property name="text">
      <string>School Grading App</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="studentRadio">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>420</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Student</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="teacherRadio">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>420</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Teacher</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="usernameBox">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>500</y>
+      <width>200</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="usernameLabel">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>480</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="passwordBox">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>580</y>
+      <width>200</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="passwordLabel">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>560</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password</string>
     </property>
    </widget>
   </widget>

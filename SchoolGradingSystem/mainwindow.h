@@ -15,7 +15,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_SignInButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    bool submitReady;
+    void hideLogin();
+    void showLogin();
 };
 #endif // MAINWINDOW_H

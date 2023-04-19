@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-//#include "student.h"
-#include "course.h"
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +25,6 @@ private:
     bool submitReady;
     void hideLogin();
     void showLogin();
-    Student x;
 
 
 };

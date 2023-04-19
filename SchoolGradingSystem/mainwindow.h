@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "student.h"
+#include "course.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +27,11 @@ private:
     bool submitReady;
     void hideLogin();
     void showLogin();
+    vector<Course> c = {Course("Math", 123)};
+    vector<Student> students = {Student(12345, c, 3.4, "pass", "james")};
+    Student s = students[0];
+
+
 
 
 };

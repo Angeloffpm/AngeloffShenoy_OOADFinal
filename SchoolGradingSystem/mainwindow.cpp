@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+
 }
 
 MainWindow::~MainWindow()
@@ -61,14 +62,14 @@ void MainWindow::showLogin()
 
 void MainWindow::on_confirmButton_clicked()
 {
-//    if (ui->studentRadio->isChecked()) {
+    if (ui->studentRadio->isChecked()) {
 
-//        if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
+        if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
 
+               close();
 
+        }
 
-//        }
-
-//    }
+    }
 }
 

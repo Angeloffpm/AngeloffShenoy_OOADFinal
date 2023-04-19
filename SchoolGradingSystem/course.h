@@ -11,7 +11,7 @@ class Student;
 class Course
 {
 public:
-    Course(string name, int classID, vector<Student> students);
+    Course(string name, int classID);
     int getClassID();
     string getClassName();
 //    Teacher getTeacher() const;

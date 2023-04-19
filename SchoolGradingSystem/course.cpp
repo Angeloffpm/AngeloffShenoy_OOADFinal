@@ -2,11 +2,10 @@
 #include "student.h"
 
 
-Course::Course(string name_, int classID_, vector<Student> students_)
+Course::Course(string name_, int classID_)
 {
     name = name_;
     classID = classID_;
-    students = students_;
 
 }
 

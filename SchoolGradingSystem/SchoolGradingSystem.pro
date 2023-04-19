@@ -13,6 +13,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
+    studentwindow.cpp \
     teacher.cpp \
     teacherwindow.cpp
 
@@ -20,11 +21,13 @@ HEADERS += \
     course.h \
     mainwindow.h \
     student.h \
+    studentwindow.h \
     teacher.h \
     teacherwindow.h
 
 FORMS += \
     mainwindow.ui \
+    studentwindow.ui \
     teacherwindow.ui
 
 # Default rules for deployment.

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "teacherwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -9,8 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     submitReady = false;
     hideLogin();
-
-
 
 
 }
@@ -70,11 +69,23 @@ void MainWindow::on_confirmButton_clicked()
 {
     if (ui->studentRadio->isChecked()) {
 
-        if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
+        for (Student s: students) {
 
-               close();
+            if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
+
+                studentwindow = new StudentWindow;
+                studentwindow->hide();
+                close();
+                studentwindow->getCourses(s.getClasses());
+                studentwindow->showCourses();
+                studentwindow->show();
+
+
+            }
 
         }
+
+
 
     }
 }

@@ -1,14 +1,7 @@
+#include "course.h"
 #include "student.h"
-#include "ui_student.h"
 
-Student::Student(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Student)
-{
-    ui->setupUi(this);
-}
-
-Student::Student(int studentID_, vector<Class> classes_, double gpa_, string password_, string name_) {
+Student::Student(int studentID_, vector<Course> classes_, double gpa_, string password_, string name_) {
 
     studentID = studentID_;
     classes = classes_;
@@ -18,31 +11,36 @@ Student::Student(int studentID_, vector<Class> classes_, double gpa_, string pas
 
 }
 
-Student::~Student()
-{
-    delete ui;
+Student::Student() {
+
+
 }
 
-void Student::addClass(Class c) {
+void Student::addClass(Course c) {
 
     classes.push_back(c);
 
 }
-void Student::removeClass(Class c) {
+void Student::removeClass(Course c) {
 
-    classes.erase(remove(classes.begin(), classes.end(), c), classes.end());
+    for (int i = 0; i < classes.size(); i++) {
 
+        if (classes[i].getClassID() == c.getClassID()) {
+
+            classes.erase(classes.begin()+i);
+        }
+    }
 }
-vector<Class> Student::getClasses() {
+vector<Course> Student::getClasses() {
 
     return classes;
 
 }
-int Student::getGrade(Class c) {
+//int Student::getGrade(Course c) {
 
-    return c.getStudentGrade(this);
-}
-bool Student::verifyLogin(string id, string pass) {
+
+//}
+bool Student::verifyLogin(int id, string pass) {
 
     if (id == studentID && pass == password) {return true;}
     else {return false;}

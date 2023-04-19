@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+//#include "student.h"
+#include "course.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -18,10 +19,15 @@ public:
 private slots:
     void on_SignInButton_clicked();
 
+    void on_confirmButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool submitReady;
     void hideLogin();
     void showLogin();
+    Student x;
+
+
 };
 #endif // MAINWINDOW_H

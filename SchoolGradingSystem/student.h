@@ -3,42 +3,40 @@
 #include <QMainWindow>
 #include <vector>
 using namespace std;
+//#include "course.h"
 
 
-struct Assignment {
 
-    string name;
-    int score;
 
-};
-
-class Class;
 namespace Ui {
 class Student;
 }
-
-class Student : public QMainWindow
+class Course;
+class Student
 {
-    Q_OBJECT
-
 public:
-    explicit Student(QWidget *parent = nullptr);
-    Student(int studentID_, vector<Class> classes_, double gpa_, string password_, string name_);
-    ~Student();
-    void addClass(Class c);
-    void removeClass(Class c);
-    vector<Class> getClasses();
-    int getGrade(Class c);
-    bool verifyLogin(string id, string pass);
+    Student(int studentID_, vector<Course> classes_, double gpa_, string password_, string name_);
+    Student();
+    void addClass(Course c);
+    void removeClass(Course c);
+    vector<Course> getClasses();
+    int getGrade(Course c);
+    bool verifyLogin(int id, string pass);
     int getUserID();
     string getPassword();
 
     void exit();
 
 private:
-    Ui::Student *ui;
+
+    struct Assignment {
+
+        string name;
+        int score;
+
+    };
     int studentID;
-    vector<Class> classes;
+    vector<Course> classes;
     double gpa;
     string password;
     string name;

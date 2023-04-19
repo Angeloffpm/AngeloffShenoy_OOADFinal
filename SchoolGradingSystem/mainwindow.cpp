@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     submitReady = false;
     hideLogin();
+    Student s = Student(123456,NULL,3.4,"password", "James");
+    x = s;
+
 }
 
 MainWindow::~MainWindow()
@@ -40,6 +43,7 @@ void MainWindow::hideLogin()
     ui->usernameBox->hide();
     ui->passwordLabel->hide();
     ui->passwordBox->hide();
+    ui->confirmButton->hide();
 }
 
 void MainWindow::showLogin()
@@ -52,4 +56,19 @@ void MainWindow::showLogin()
     ui->usernameBox->show();
     ui->passwordLabel->show();
     ui->passwordBox->show();
+    ui->confirmButton->show();
 }
+
+void MainWindow::on_confirmButton_clicked()
+{
+    if (ui->studentRadio->isChecked()) {
+
+        if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
+
+               accept();
+
+        }
+
+    }
+}
+

@@ -1,31 +1,41 @@
-#ifndef CLASS_H
-#define CLASS_H
+#ifndef COURSE_H
+#define COURSE_H
 #include <string>
-#include "student.h"
+#include <iostream>
+using namespace std;
+#include <vector>
+
 
 
 class Student;
-class Class
+class Course
 {
 public:
-    Class(string name, int classID, vector<Student> students);
-    int getStudentGrade(Student s);
+    Course(string name, int classID, vector<Student> students);
     int getClassID();
-    std::string getClassName();
+    string getClassName();
 //    Teacher getTeacher() const;
-    std::vector<Student> getStudents();
+
+    vector<Student> getStudents();
     void addStudent(Student s);
     void removeStudent(Student s);
     void printGrades();
-    int getStudentGrade(Student s);
     void addAssignment(string name_, int score, Student s);
+    int getStudentGrade(Student s);
 
 private:
+    struct Assignment {
+
+        string name;
+        int score;
+
+    };
     int classID;
     string name;
     // Teacher teacher;
     vector<Student> students;
     vector<pair<Assignment, Student>> assignments;
+
 };
 
-#endif // CLASS_H
+#endif // COURSE_H

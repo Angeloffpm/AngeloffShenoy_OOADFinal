@@ -8,6 +8,9 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QTextEdit>
+#include <QDialog>
+
+
 
 namespace Ui {
 class StudentWindow;
@@ -22,6 +25,7 @@ public:
     ~StudentWindow();
     void showCourses();
     void getCourses(vector<Course> c);
+    void openCourseGrades(Course s);
 
 private:
     Ui::StudentWindow *ui;

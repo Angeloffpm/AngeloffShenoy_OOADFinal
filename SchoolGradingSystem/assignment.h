@@ -3,46 +3,56 @@
 #define ASSIGNMENT_H
 
 #include <map>
+using namespace std;
 
 class Student;
 
 #include <string>
 class Assignment
 {
+
+
     public:
-        Assignment();
+        Assignment(string name);
 
         void inputScore(Student* student, int score);
-        int getScore(Student* student);
-        std::map<Student*, int> getAllScores();
-        int updateScore(Student* student, int score); // <-- This may not be necessary. Maybe just make inputScore also able to update already existing scores. Your call.
+        int getScore(Student* student) const;
+        map<Student*, int> getAllScores();
+        void updateScore(Student* student, int score); // *update* i thought this was a good idea, so i kept and implemented it
         int getWeight();
+        string getTitle() const;
+
+    protected:
+        int weight;
 
     private:
-        std::string title;
-        std::map<Student*, int> scores;
-        int weight;
+        string title;
+        map<Student*, int> scores;
+
+
+
 
 };
 
 class Homework : public Assignment {
 
     public:
-        Homework();
+        Homework(string name);
+
 
 };
 
 class Quiz : public Assignment {
 
     public:
-        Quiz();
+        Quiz(string name);
 
 };
 
 class Exam : public Assignment {
 
     public:
-        Exam();
+        Exam(string name);
 
 };
 

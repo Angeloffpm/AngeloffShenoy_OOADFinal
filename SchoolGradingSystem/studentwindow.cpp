@@ -19,6 +19,25 @@ void StudentWindow::getCourses(vector<Course> c) {
     courses = c;
 }
 
+void StudentWindow::openCourseGrades(Course c) {
+    QDialog* courseGradesWindow = new QDialog(this);
+    courseGradesWindow->setWindowTitle("Course Grades");
+
+    QSize currentSize = this->size();
+    courseGradesWindow->setFixedSize(currentSize);
+
+    Assignment* a = new Assignment("Exam 1");
+    vector<Course> x = {Course("Calculus 1", 1000)};
+    Student* d = new Student(157235, x, 3.4, "password123", "James Green");
+    a->inputScore(d, 95);
+    c.addAssignment(d, a);
+
+    c.printGradesHelper(courseGradesWindow);
+
+    // Display the window
+    courseGradesWindow->exec();
+}
+
 void StudentWindow::showCourses() {
 
     for (int i = 0; i < courses.size(); i++) {
@@ -28,6 +47,11 @@ void StudentWindow::showCourses() {
         QFont font = x->font();
         font.setPointSize(28);
         x->setFont(font);
+        connect(x, &QPushButton::clicked, [this, i]() {
+            openCourseGrades(courses[i]);
+        });
     }
 }
+
+
 

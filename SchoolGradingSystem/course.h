@@ -4,7 +4,10 @@
 #include <iostream>
 using namespace std;
 #include <vector>
-
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QWidget>
+#include "assignment.h"
 
 
 class Student;
@@ -19,22 +22,17 @@ public:
     vector<Student> getStudents();
     void addStudent(Student s);
     void removeStudent(Student s);
-    void printGrades();
-    void addAssignment(string name_, int score, Student s);
+    void printGradesHelper(QWidget* parent);
+    void addAssignment(Student* s, Assignment* a);
     int getStudentGrade(Student s);
+    map<Student*, Assignment*> assignments;
 
 private:
-    struct Assignment {
-
-        string name;
-        int score;
-
-    };
     int classID;
     string name;
     // Teacher teacher;
     vector<Student> students;
-    vector<pair<Assignment, Student>> assignments;
+
 
 };
 

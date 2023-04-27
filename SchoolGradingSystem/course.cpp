@@ -42,29 +42,40 @@ void Course::removeStudent(Student s) {
         }
     }
 }
-void Course::printGrades() {
+void Course::printGradesHelper(QWidget* parent) {
+    QVBoxLayout* layout = new QVBoxLayout;
+    QWidget* widget = new QWidget(parent); // Define widget before using it
 
-    for (pair<Assignment, Student> assignment: assignments) {
-
-        // cout << student.getName() << " | " << assignment.name << " | " << assignment.score << endl;
+    for (auto [student, assignment] : assignments) {
+        QString text = QString::fromStdString(student->getName()) +
+                       " | " +
+                       QString::fromStdString(assignment->getTitle()) +
+                       ": " +
+                       QString::number(assignment->getScore(student));
+        QLabel* label = new QLabel(text, widget);
+        layout->addWidget(label);
     }
 
+    widget->setLayout(layout);
+    layout->addStretch();
+    widget->show();
 }
+
+
 int Course::getStudentGrade(Student s) {
 
-    for (pair<Assignment, Student> assignment: assignments) {
+//    for (pair<Assignment, Student> assignment: assignments) {
 
-        if (s.getUserID() == assignment.second.getUserID()) {return assignment.first.score;}
-    }
+    // need to calculate grade before returning
+
+//    }
 
     return NULL;
 
 }
-void Course::addAssignment(string name_, int score_, Student s) {
+void Course::addAssignment(Student* s, Assignment* a) {
 
-    Assignment a;
-    a.name = name_;
-    a.score = score_;
-    assignments.push_back(pair<Assignment,Student> {a,s});
+    assignments.insert(make_pair(s,a));
+
 }
 

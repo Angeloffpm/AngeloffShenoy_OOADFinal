@@ -49,6 +49,10 @@ bool Student::verifyLogin(int id, string pass) {
 int Student::getUserID() {
     return studentID;
 }
+string Student::getName() {
+
+    return name;
+}
 string Student::getPassword() {
     return password;
 }

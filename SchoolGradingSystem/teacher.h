@@ -13,6 +13,7 @@ public:
     Teacher(string name);
 
     string getName();
+    vector<Course*> getCourses();
 private:
     string name;
     vector<Course*> courses;

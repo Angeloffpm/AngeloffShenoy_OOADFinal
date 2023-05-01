@@ -10,8 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     submitReady = false;
     hideLogin();
-
-
+    this->data = new DataTest();
 }
 
 MainWindow::~MainWindow()
@@ -28,12 +27,15 @@ void MainWindow::on_SignInButton_clicked()
     if (submitReady) {
         if (ui->studentRadio->isChecked()) { // If student selected
             return;
-        } else { // If teacher selected
-            qDebug() << "Teacher login";
-            TeacherWindow *tw = new TeacherWindow(nullptr, new Teacher());
-            tw->show();
-            this->hide();
-            return;
+        } else if (ui->teacherRadio->isChecked()) { // If teacher selected
+            Teacher* userTeacher = verifyTeacherLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
+            if (userTeacher != nullptr)
+            {
+                TeacherWindow *tw = new TeacherWindow(nullptr, userTeacher);
+                tw->show();
+                this->hide();
+            }
+            else qDebug() << "Username or password incorrect.";
         }
     } else {
         showLogin();
@@ -68,25 +70,27 @@ void MainWindow::showLogin()
 void MainWindow::on_confirmButton_clicked()
 {
     if (ui->studentRadio->isChecked()) {
-
         for (Student s: students) {
-
             if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
-
                 studentwindow = new StudentWindow;
                 studentwindow->hide();
                 close();
                 studentwindow->getCourses(s.getClasses());
                 studentwindow->showCourses();
                 studentwindow->show();
-
-
             }
-
         }
-
-
-
     }
+}
+
+Teacher* MainWindow::verifyTeacherLogin(string user_, string pass_)
+{
+    Teacher* target = data->findTeacherUser(user_);
+    if (target != nullptr)
+    {
+        if (target->verifyPassword(pass_)) return target;
+        else return nullptr;
+    }
+    return nullptr;
 }
 

@@ -1,7 +1,7 @@
 #include "course.h"
 #include "student.h"
 
-Student::Student(int studentID_, vector<Course> classes_, double gpa_, string password_, string name_) {
+Student::Student(int studentID_, vector<Course*> classes_, double gpa_, string password_, string name_) {
 
     studentID = studentID_;
     classes = classes_;
@@ -18,20 +18,21 @@ Student::Student() {
 
 void Student::addClass(Course c) {
 
-    classes.push_back(c);
+    classes.push_back(&c);
 
 }
 void Student::removeClass(Course c) {
 
     for (int i = 0; i < classes.size(); i++) {
 
-        if (classes[i].getClassID() == c.getClassID()) {
+        if (classes[i]->getClassID() == c.getClassID()) {
 
             classes.erase(classes.begin()+i);
+
         }
     }
 }
-vector<Course> Student::getClasses() {
+vector<Course*> Student::getClasses() {
 
     return classes;
 

@@ -32,8 +32,6 @@ private:
     void hideLogin();
     void showLogin();
     Teacher* verifyTeacherLogin(string user_, string pass_);
-    vector<Course> c = {Course("Calculus 1", 1000), Course("Calculus 2", 1100), Course("Calculus 3", 1200)};
-    vector<Student> students = {Student(157235, c, 3.4, "password123", "James Green"), Student(149484, c, 3.4, "iloveschool", "Jair Galindo Flores"), Student(174938, c, 3.4, "outofcountrystudent123", "Rayner Susanto")};
 
 
 

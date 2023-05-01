@@ -70,13 +70,14 @@ void MainWindow::showLogin()
 void MainWindow::on_confirmButton_clicked()
 {
     if (ui->studentRadio->isChecked()) {
-        for (Student s: students) {
-            if (to_string(s.getUserID()) == ui->usernameBox->text().toStdString() && s.getPassword() == ui->passwordBox->text().toStdString()) {
+        for (Student* s: data->getStudents()) {
+            if (to_string(s->getUserID()) == ui->usernameBox->text().toStdString() && s->getPassword() == ui->passwordBox->text().toStdString()) {
                 studentwindow = new StudentWindow;
                 studentwindow->hide();
                 close();
-                studentwindow->getCourses(s.getClasses());
-                studentwindow->showCourses();
+                vector<Course*> c = data->getCourses();
+                studentwindow->setCourses(c);
+                studentwindow->showMenu();
                 studentwindow->show();
             }
         }

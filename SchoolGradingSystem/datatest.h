@@ -14,6 +14,8 @@ class DataTest
         vector<Student*> getStudents();
         vector<Teacher*> getTeachers();
         Teacher* findTeacherUser(string user_);
+        Student* findStudentUser(string user_);
+        void addCourse(Course* c);
 
     private:
         vector<Course*> courses;

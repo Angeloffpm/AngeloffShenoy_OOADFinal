@@ -26,11 +26,16 @@ void StudentWindow::openCourseGrades(Course c) {
     QSize currentSize = this->size();
     courseGradesWindow->setFixedSize(currentSize);
 
-    Assignment* a = new Assignment("Exam 1");
-    vector<Course> x = {Course("Calculus 1", 1000)};
+    vector<Assignment> a1 = {Exam("Exam 1"), Homework("Homework 1"), Homework("Homework 2")};
+    vector<Course> x = {Course("Calculus 1", 1000), Course("Calculus 2", 1100), Course("Calculus 3", 1200)};
     Student* d = new Student(157235, x, 3.4, "password123", "James Green");
-    a->inputScore(d, 95);
-    c.addAssignment(d, a);
+    a1[0].inputScore(d, 82);
+    a1[1].inputScore(d, 96);
+    a1[2].inputScore(d, 100);
+
+    c.addAssignment(d, &a1[0]);
+    c.addAssignment(d, &a1[1]);
+    c.addAssignment(d, &a1[2]);
 
     c.printGradesHelper(courseGradesWindow);
 

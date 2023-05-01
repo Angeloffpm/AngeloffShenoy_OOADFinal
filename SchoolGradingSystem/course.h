@@ -11,6 +11,7 @@ using namespace std;
 
 
 class Student;
+class Teacher;
 class Course
 {
 public:
@@ -30,7 +31,7 @@ public:
 private:
     int classID;
     string name;
-    // Teacher teacher;
+    Teacher* teacher;
     vector<Student> students;
 
 

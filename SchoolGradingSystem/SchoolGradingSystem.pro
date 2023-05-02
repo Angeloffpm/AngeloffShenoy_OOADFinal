@@ -17,6 +17,7 @@ SOURCES += \
     student.cpp \
     studentwindow.cpp \
     teacher.cpp \
+    teacherviewcoursebutton.cpp \
     teacherwindow.cpp
 
 HEADERS += \
@@ -27,6 +28,7 @@ HEADERS += \
     student.h \
     studentwindow.h \
     teacher.h \
+    teacherviewcoursebutton.h \
     teacherwindow.h
 
 FORMS += \

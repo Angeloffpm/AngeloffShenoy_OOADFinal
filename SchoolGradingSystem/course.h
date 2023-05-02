@@ -16,23 +16,26 @@ class Course
 {
 public:
     Course(string name, int classID);
+    Course(string name, int classID, Teacher* t);
     int getClassID();
     string getClassName();
 //    Teacher getTeacher() const;
 
     vector<Student> getStudents();
+    void assignTeacher(Teacher* t);
     void addStudent(Student s);
     void removeStudent(Student s);
     void printGradesHelper(QWidget* parent);
     void addAssignment(Student* s, Assignment* a);
     int getStudentGrade(Student s);
-    map<Student*, Assignment*> assignments;
+//    map<Student*, Assignment*> assignments;
 
 private:
     int classID;
     string name;
     Teacher* teacher;
     vector<Student> students;
+    map<Student*, Assignment*> assignments;
 
 
 };

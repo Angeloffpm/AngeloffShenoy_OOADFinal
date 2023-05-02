@@ -13,6 +13,7 @@
 #include <QDialogButtonBox>
 #include <QDialog>
 #include <QTimer>
+#include <vector>
 
 
 
@@ -32,6 +33,7 @@ public:
     void openCourseGrades(Course* s);
     void addClassDialog();
     void updateMenu();
+    void removeClassDialog();
 
 
 private:
@@ -39,9 +41,12 @@ private:
     vector<Course*> courses;
     vector<Student*> students;
     QPushButton* addNewClass;
+    QPushButton* removeNewClass;
     QDialog* courseGradesWindow;
-    QDialog* menu;
     DataTest* ds;
+    QDialog* menuDialog;
+    QDialog* addCourseDialog;
+    QDialog* removeCourseDialog;
 
 };
 

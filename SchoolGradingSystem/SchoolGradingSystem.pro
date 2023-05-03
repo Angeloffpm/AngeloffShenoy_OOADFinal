@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     assignment.cpp \
     course.cpp \
+    datamanager.cpp \
     datatest.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     assignment.h \
     course.h \
+    datamanager.h \
     datatest.h \
     mainwindow.h \
     student.h \

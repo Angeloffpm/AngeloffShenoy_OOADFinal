@@ -1,5 +1,7 @@
-
 #include "datamanager.h"
+
+// instantiate the dataManager instance
+DataManager* DataManager::dataManager = nullptr;
 
 DataManager::DataManager()
 {

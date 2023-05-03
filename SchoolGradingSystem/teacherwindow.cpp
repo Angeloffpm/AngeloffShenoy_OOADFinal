@@ -26,7 +26,7 @@ void TeacherWindow::displayCourses()
     int i = 0;
     for (auto c : courses)
     {
-        qDebug() << c->getClassName();
+        qDebug() << QString::fromStdString(c->getClassName());
         // Create new button for each course, connect with slot
         teacherViewCourseButton *vcButton = new teacherViewCourseButton(c, 30, 250+i);
         vcButton->setParent(this);
@@ -37,5 +37,5 @@ void TeacherWindow::displayCourses()
 
 void TeacherWindow::courseButton(Course *c)
 {
-    qDebug() << c->getClassName();
+    qDebug() << QString::fromStdString(c->getClassName());
 }

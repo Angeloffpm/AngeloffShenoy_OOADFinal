@@ -1,12 +1,18 @@
 #include "course.h"
 #include "student.h"
 
-
+// Constructors
 Course::Course(string name_, int classID_)
 {
     name = name_;
     classID = classID_;
+}
 
+Course::Course(string name, int classID, Teacher *t)
+{
+    this->name = name;
+    this->classID = classID;
+    this->teacher = t;
 }
 
 //int Class::getStudentGrade(Student s) {
@@ -14,34 +20,27 @@ Course::Course(string name_, int classID_)
 
 
 //}
-int Course::getClassID() {
 
-    return classID;
-}
-string Course::getClassName() {
-
-    return name;
-}
+// Getters
+int Course::getClassID() { return classID; }
+string Course::getClassName() { return name; }
 //    Teacher getTeacher() const;
-vector<Student> Course::getStudents() {
+vector<Student> Course::getStudents() { return students; }
 
-    return students;
-}
 void Course::addStudent(Student s) {
-
     students.push_back(s);
-
 }
+
 void Course::removeStudent(Student s) {
-
     for (int i = 0; i < students.size(); i++) {
-
         if (students[i].getUserID() == s.getUserID()) {
-
             students.erase(students.begin()+i);
         }
     }
 }
+
+void Course::assignTeacher(Teacher *t) { this->teacher = t; }
+
 void Course::printGradesHelper(QWidget* parent) {
     QVBoxLayout* layout = new QVBoxLayout;
     QWidget* widget = new QWidget(parent); // Define widget before using it

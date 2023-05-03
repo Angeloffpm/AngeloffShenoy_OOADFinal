@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include "teacher.h"
+#include <QWidget>
+#include <QPushButton>
+#include "teacherviewcoursebutton.h"
 
 namespace Ui {
 class TeacherWindow;
@@ -16,9 +19,14 @@ public:
     explicit TeacherWindow(QWidget *parent = nullptr, Teacher *t = nullptr);
     ~TeacherWindow();
 
+public slots:
+    void courseButton(Course* c);
+
 private:
     Ui::TeacherWindow *ui;
     Teacher *teacher;
+    void displayCourses();
+    vector<teacherViewCourseButton*> courseButtons;
 };
 
 #endif // TEACHERWINDOW_H

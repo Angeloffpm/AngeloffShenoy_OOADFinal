@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     assignment.cpp \
     course.cpp \
+    datamanager.cpp \
     data.cpp \
     datatest.cpp \
     main.cpp \
@@ -18,17 +19,20 @@ SOURCES += \
     student.cpp \
     studentwindow.cpp \
     teacher.cpp \
+    teacherviewcoursebutton.cpp \
     teacherwindow.cpp
 
 HEADERS += \
     assignment.h \
     course.h \
     data.h \
+    datamanager.h \
     datatest.h \
     mainwindow.h \
     student.h \
     studentwindow.h \
     teacher.h \
+    teacherviewcoursebutton.h \
     teacherwindow.h
 
 FORMS += \

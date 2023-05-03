@@ -13,6 +13,7 @@ SOURCES += \
     assignmentfactory.cpp \
     course.cpp \
     datamanager.cpp \
+    data.cpp \
     datatest.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     assignment.h \
     assignmentfactory.h \
     course.h \
+    data.h \
     datamanager.h \
     datatest.h \
     mainwindow.h \

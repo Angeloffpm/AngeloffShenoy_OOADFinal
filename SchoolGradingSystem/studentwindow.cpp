@@ -27,6 +27,13 @@ void StudentWindow::openCourseGrades(Course* c) {
     courseGradesWindow->setFixedSize(currentSize);
 
     vector<Assignment*> a1 = {new Exam("Exam 1"), new Homework("Homework 1"), new Homework("Homework 2")};
+    int j = 0;
+    for (int i = 0; i < students.size(); i++) {
+
+        c->addAssignment(students[i], a1[j]);
+        j++;
+
+    }
 
     vector<Student*> s = {new Student(157235, courses, 3.4, "password123", "James Green"), new Student(237165, courses, 3.7, "jamesgreensux", "Rachel Green")};
     a1[0]->inputScore(s[0], 82);

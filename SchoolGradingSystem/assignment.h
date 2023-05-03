@@ -14,7 +14,7 @@ class Assignment
 
     public:
         Assignment(string name);
-
+        
         void inputScore(Student* student, int score);
         int getScore(Student* student) const;
         map<Student*, int> getAllScores();

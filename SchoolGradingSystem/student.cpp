@@ -16,16 +16,16 @@ Student::Student() {
 
 }
 
-void Student::addClass(Course c) {
+void Student::addClass(Course* c) {
 
-    classes.push_back(&c);
+    classes.push_back(c);
 
 }
-void Student::removeClass(Course c) {
+void Student::removeClass(Course* c) {
 
     for (int i = 0; i < classes.size(); i++) {
 
-        if (classes[i]->getClassID() == c.getClassID()) {
+        if (classes[i]->getClassID() == c->getClassID()) {
 
             classes.erase(classes.begin()+i);
 
@@ -56,4 +56,19 @@ string Student::getName() {
 }
 string Student::getPassword() {
     return password;
+}
+
+bool Student::inClass(Course* c) {
+
+    for (int i = 0; i < classes.size(); i++) {
+
+        if (c->getClassID() == classes[i]->getClassID()) {
+
+            return true;
+
+        }
+
+    }
+
+    return false;
 }

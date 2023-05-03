@@ -17,6 +17,15 @@ DataTest::DataTest()
     this->teachers[0]->assignCourse(course2);
     this->courses.push_back(course1);
     this->courses.push_back(course2);
+    // Test Assignments & Assignment Factory
+    AssignmentFactory aFactory = AssignmentFactory();
+    Exam* testExam1 = aFactory.createExam("Test Exam 1");
+    Homework* testHW1 = aFactory.createHomework("Test Homework 1");
+    Quiz* testQuiz1 = aFactory.createQuiz("Test Quiz 1");
+    course1->addAssignment(testExam1);
+    course1->addAssignment(testHW1);
+    course1->addAssignment(testQuiz1);
+
 }
 
 Teacher* DataTest::findTeacherUser(string user_) {

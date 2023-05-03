@@ -5,7 +5,7 @@
 #include "course.h"
 #include "student.h"
 #include "teacher.h"
-#include "assignment.h"
+#include "assignmentfactory.h"
 #include <map>
 using namespace std;
 

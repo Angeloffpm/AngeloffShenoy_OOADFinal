@@ -26,7 +26,7 @@ void StudentWindow::openCourseGrades(Course* c) {
     QSize currentSize = this->size();
     courseGradesWindow->setFixedSize(currentSize);
 
-    vector<Assignment*> a1 = {new Exam("Exam 1"), new Homework("Homework 1"), new Homework("Homework 2")};
+    vector<Assignment*> a1 = {new Exam("Exam 1", 100), new Homework("Homework 1", 100), new Homework("Homework 2", 100)};
     int j = 0;
     for (int i = 0; i < students.size(); i++) {
 

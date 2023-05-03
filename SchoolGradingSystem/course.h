@@ -27,8 +27,10 @@ public:
     void removeStudent(Student s);
     void printGradesHelper(QWidget* parent);
     void addAssignment(Student* s, Assignment* a);
+    void addAssignment(Assignment* a);
     int getStudentGrade(Student s);
 //    map<Student*, Assignment*> assignments;
+    vector<Assignment*> getAllAssignments();
 
 private:
     int classID;
@@ -36,6 +38,7 @@ private:
     Teacher* teacher;
     vector<Student> students;
     map<Student*, Assignment*> assignments;
+    vector<Assignment*> allAssignments;
 
 
 };

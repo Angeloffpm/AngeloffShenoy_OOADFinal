@@ -1,9 +1,10 @@
 
 #include "assignment.h"
 
-Assignment::Assignment(string name)
+Assignment::Assignment(string name, int totalPoints)
 {
     title = name;
+    this->totalPoints = totalPoints;
 }
 
 void Assignment::inputScore(Student* student, int score) {
@@ -43,19 +44,19 @@ string Assignment::getTitle() const {
 
     return title;
 }
-Homework::Homework(string name) : Assignment(name) {
+Homework::Homework(string name, int totalPoints) : Assignment(name, totalPoints) {
 
     weight = 50;
 
 }
 
-Quiz::Quiz(string name) : Assignment(name) {
+Quiz::Quiz(string name, int totalPoints) : Assignment(name, totalPoints) {
 
    weight = 20;
 
 }
 
-Exam::Exam(string name) : Assignment(name) {
+Exam::Exam(string name, int totalPoints) : Assignment(name, totalPoints) {
 
     weight = 30;
 

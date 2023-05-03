@@ -13,6 +13,7 @@ Course::Course(string name, int classID, Teacher *t)
     this->name = name;
     this->classID = classID;
     this->teacher = t;
+    this->allAssignments = vector<Assignment*>();
 }
 
 //int Class::getStudentGrade(Student s) {
@@ -78,3 +79,5 @@ void Course::addAssignment(Student* s, Assignment* a) {
 
 }
 
+void Course::addAssignment(Assignment* a) { this->allAssignments.push_back(a); }
+vector<Assignment*> Course::getAllAssignments() { return this->allAssignments; }

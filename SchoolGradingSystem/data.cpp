@@ -84,7 +84,7 @@ Data::Data()
 
                         getline(ss,split, ',');
                         assName = split;
-                        Assignment* a = new Assignment(assName);
+                        Assignment* a = new Assignment(assName, 100);
                         getline(ss,split, ',');
                         score = stoi(split);
                         a->inputScore(students[j],score);

@@ -13,7 +13,7 @@ class Assignment
 
 
     public:
-        Assignment(string name);
+        Assignment(string name, int totalPoints);
         
         void inputScore(Student* student, int score);
         int getScore(Student* student) const;
@@ -23,6 +23,7 @@ class Assignment
         string getTitle() const;
 
     protected:
+        int totalPoints;
         int weight;
 
     private:
@@ -37,7 +38,7 @@ class Assignment
 class Homework : public Assignment {
 
     public:
-        Homework(string name);
+        Homework(string name, int totalPoints);
 
 
 };
@@ -45,14 +46,14 @@ class Homework : public Assignment {
 class Quiz : public Assignment {
 
     public:
-        Quiz(string name);
+        Quiz(string name, int totalPoints);
 
 };
 
 class Exam : public Assignment {
 
     public:
-        Exam(string name);
+        Exam(string name, int totalPoints);
 
 };
 

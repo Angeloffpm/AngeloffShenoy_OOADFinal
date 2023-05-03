@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include "teacherviewcoursebutton.h"
+#include "teachercourseviewwindow.h"
 
 namespace Ui {
 class TeacherWindow;

@@ -3,6 +3,7 @@
 #define ASSIGNMENTFACTORY_H
 
 #include "assignment.h"
+#include <QString>
 
 /*
  * Assignment Factory
@@ -18,7 +19,7 @@ class AssignmentFactory
         Homework* createHomework(string name);
         Quiz* createQuiz(string name);
         Exam* createExam(string name);
-
+        Assignment* createAssignment(QString type, int totalScore);
 
 };
 

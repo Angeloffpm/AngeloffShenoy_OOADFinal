@@ -1,6 +1,6 @@
 
 #include "assignment.h"
-
+Assignment::Assignment(){}
 Assignment::Assignment(string name, int totalPoints)
 {
     title = name;
@@ -60,4 +60,23 @@ Exam::Exam(string name, int totalPoints) : Assignment(name, totalPoints) {
 
     weight = 30;
 
+}
+
+AssignmentDecorator::AssignmentDecorator(Assignment* a) :
+    assignment(a)
+{}
+
+CurvedAssignment::CurvedAssignment(Assignment* a, int curve_) :
+    AssignmentDecorator(a),
+    curve(curve_)
+{}
+
+map<Student*, int> CurvedAssignment::getAllScores()
+{
+    map<Student*, int> curvedScores;
+    for (auto const& [student, score] : scores)
+    {
+        curvedScores[student] = score + this->curve;
+    }
+    return curvedScores;
 }

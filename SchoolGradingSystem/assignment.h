@@ -23,10 +23,9 @@ class Assignment
         string getTitle() const;
 
     protected:
+        Assignment(); // Protected default constructor for decorator class
         int totalPoints;
         int weight;
-
-    private:
         string title;
         map<Student*, int> scores;
 
@@ -54,6 +53,29 @@ class Exam : public Assignment {
 
     public:
         Exam(string name, int totalPoints);
+
+};
+
+/* Decorator Pattern */
+
+class AssignmentDecorator : public Assignment {
+
+    public:
+        AssignmentDecorator(Assignment* a);
+
+    protected:
+        Assignment* assignment;
+
+};
+
+class CurvedAssignment : public AssignmentDecorator {
+
+    public:
+        CurvedAssignment(Assignment *a, int curve_);
+        map<Student*, int> getAllScores();
+
+    private:
+        int curve;
 
 };
 

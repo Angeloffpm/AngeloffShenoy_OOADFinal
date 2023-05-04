@@ -1,7 +1,9 @@
 #include "teachercourseviewwindow.h"
 #include "qdialog.h"
 #include "QTableView"
+#include "qlineedit.h"
 #include "ui_teachercourseviewwindow.h"
+#include "assignmentfactory.h"
 
 teacherCourseViewWindow::teacherCourseViewWindow(QWidget *parent, Course* course_) :
     QMainWindow(parent),
@@ -9,12 +11,9 @@ teacherCourseViewWindow::teacherCourseViewWindow(QWidget *parent, Course* course
     ui(new Ui::teacherCourseViewWindow)
 {
     ui->setupUi(this);
-    int i = 0;
-    for (auto assignment : course->getAllAssignments())
-    {
-        drawAssignment(assignment, 20, 150+i);
-        i += 110;
-    }
+    ui->courseNameLabel->setText(QString::fromStdString(course->getClassName()));
+
+    updateAssignmentList();
 }
 
 teacherCourseViewWindow::~teacherCourseViewWindow()
@@ -50,10 +49,76 @@ void teacherCourseViewWindow::drawAssignment(Assignment *a, int x, int y)
         QTableView* tableView = new QTableView(dialog);
         tableView->setGeometry(10, 50, 380, 340);
 
+        // set up table model and view
+        GradesTableModel* model = new GradesTableModel(a, this);
+        tableView->setModel(model);
+
         // show dialog
         dialog->exec();
 
         // clean up
         delete dialog;
     });
+    this->assignmentFrames.push_back(aFrame);
+    aFrame->show();
+}
+
+#include "QComboBox"
+
+void teacherCourseViewWindow::on_newAssignmentButton_clicked()
+{
+    // Create dialog
+    QDialog *createAssignmentWindow = new QDialog(this);
+    createAssignmentWindow->setWindowTitle("Create New Assignment");
+
+    // Drop down menu for type of assignment
+    QLabel *assignmentTypeLabel = new QLabel("Assignment Type:", createAssignmentWindow);
+    QComboBox *assignmentTypeComboBox = new QComboBox(createAssignmentWindow);
+    assignmentTypeComboBox->addItem("Exam");
+    assignmentTypeComboBox->addItem("Quiz");
+    assignmentTypeComboBox->addItem("Homework");
+    QHBoxLayout *assignmentTypeLayout = new QHBoxLayout();
+    assignmentTypeLayout->addWidget(assignmentTypeLabel);
+    assignmentTypeLayout->addWidget(assignmentTypeComboBox);
+
+    // Input score box
+    QLabel *scoreLabel = new QLabel("Total Points:", createAssignmentWindow);
+    QLineEdit *scoreLineEdit = new QLineEdit(createAssignmentWindow);
+    QHBoxLayout *scoreLayout = new QHBoxLayout();
+    scoreLayout->addWidget(scoreLabel);
+    scoreLayout->addWidget(scoreLineEdit);
+
+    // Submit button
+    QPushButton *submitButton = new QPushButton("Submit", createAssignmentWindow);
+    connect(submitButton, &QPushButton::clicked, createAssignmentWindow, &QDialog::accept);
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    mainLayout->addLayout(assignmentTypeLayout);
+    mainLayout->addLayout(scoreLayout);
+    mainLayout->addWidget(submitButton);
+    createAssignmentWindow->setLayout(mainLayout);
+
+    // Execute Dialog
+    int result = createAssignmentWindow->exec();
+    if (result == QDialog::Accepted) {
+        QString assignmentType = assignmentTypeComboBox->currentText();
+        int score = scoreLineEdit->text().toInt();
+        AssignmentFactory af;
+        course->addAssignment(af.createAssignment(assignmentType, score));
+        updateAssignmentList();
+    }
+}
+
+void teacherCourseViewWindow::updateAssignmentList()
+{
+    for (auto frame : assignmentFrames) {
+        delete frame;
+    }
+    assignmentFrames.clear();
+
+    int i = 0;
+    for (auto a : course->getAllAssignments())
+    {
+        drawAssignment(a, 20, 150+i);
+        i += 110;
+    }
 }

@@ -15,6 +15,7 @@ SOURCES += \
     datamanager.cpp \
     data.cpp \
     datatest.cpp \
+    gradestablemodel.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     data.h \
     datamanager.h \
     datatest.h \
+    gradestablemodel.h \
     mainwindow.h \
     student.h \
     studentwindow.h \

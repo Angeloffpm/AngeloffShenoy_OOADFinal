@@ -27,7 +27,14 @@ void MainWindow::on_SignInButton_clicked()
 {
     if (submitReady) {
         if (ui->studentRadio->isChecked()) { // If student selected
-            return;
+            Student* userStudent = verifyStudentLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
+            if (userStudent != nullptr)
+            {
+                StudentWindow *sw = new StudentWindow(nullptr, userStudent);
+                sw->show();
+                this->hide();
+            }
+            else qDebug() << "Username or password incorrect.";
         } else if (ui->teacherRadio->isChecked()) { // If teacher selected
             Teacher* userTeacher = verifyTeacherLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
             if (userTeacher != nullptr)
@@ -52,7 +59,7 @@ void MainWindow::hideLogin()
     ui->usernameBox->hide();
     ui->passwordLabel->hide();
     ui->passwordBox->hide();
-    ui->confirmButton->hide();
+//    ui->confirmButton->hide();
 }
 
 void MainWindow::showLogin()
@@ -65,29 +72,29 @@ void MainWindow::showLogin()
     ui->usernameBox->show();
     ui->passwordLabel->show();
     ui->passwordBox->show();
-    ui->confirmButton->show();
+//    ui->confirmButton->show();
 }
 
-void MainWindow::on_confirmButton_clicked()
-{
-    if (submitReady) {
-        if (ui->teacherRadio->isChecked()) { // If teacher selected
-            return;
-        } else if (ui->studentRadio->isChecked()) { // If student selected
-            Student* userStudent = verifyStudentLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
-            if (userStudent != nullptr)
-            {
-                StudentWindow *sw = new StudentWindow(nullptr, userStudent);
-                sw->show();
-                this->hide();
-            }
-            else qDebug() << "Username or password incorrect.";
-        }
-    } else {
-        showLogin();
-        submitReady = true;
-    }
-}
+//void MainWindow::on_confirmButton_clicked()
+//{
+//    if (submitReady) {
+//        if (ui->teacherRadio->isChecked()) { // If teacher selected
+//            return;
+//        } else if (ui->studentRadio->isChecked()) { // If student selected
+//            Student* userStudent = verifyStudentLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
+//            if (userStudent != nullptr)
+//            {
+//                StudentWindow *sw = new StudentWindow(nullptr, userStudent);
+//                sw->show();
+//                this->hide();
+//            }
+//            else qDebug() << "Username or password incorrect.";
+//        }
+//    } else {
+//        showLogin();
+//        submitReady = true;
+//    }
+//}
 
 Teacher* MainWindow::verifyTeacherLogin(string user_, string pass_)
 {

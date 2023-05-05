@@ -20,7 +20,6 @@ public:
 
 private slots:
     void on_SignInButton_clicked();
-    void on_confirmButton_clicked();
 
 private:
     Ui::MainWindow *ui;

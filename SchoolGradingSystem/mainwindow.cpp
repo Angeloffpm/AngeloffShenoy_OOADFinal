@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "teacherwindow.h"
+#include "studentwindow.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -69,18 +70,22 @@ void MainWindow::showLogin()
 
 void MainWindow::on_confirmButton_clicked()
 {
-    if (ui->studentRadio->isChecked()) {
-        for (Student* s: data->getStudents()) {
-            if (to_string(s->getUserID()) == ui->usernameBox->text().toStdString() && s->getPassword() == ui->passwordBox->text().toStdString()) {
-                studentwindow = new StudentWindow;
-                studentwindow->hide();
-                close();
-                vector<Course*> c = data->getCourses();
-                studentwindow->setCourses(c);
-                studentwindow->showMenu();
-                studentwindow->show();
+    if (submitReady) {
+        if (ui->teacherRadio->isChecked()) { // If teacher selected
+            return;
+        } else if (ui->studentRadio->isChecked()) { // If student selected
+            Student* userStudent = verifyStudentLogin(ui->usernameBox->text().toStdString(), ui->passwordBox->text().toStdString());
+            if (userStudent != nullptr)
+            {
+                StudentWindow *sw = new StudentWindow(nullptr, userStudent);
+                sw->show();
+                this->hide();
             }
+            else qDebug() << "Username or password incorrect.";
         }
+    } else {
+        showLogin();
+        submitReady = true;
     }
 }
 
@@ -94,4 +99,17 @@ Teacher* MainWindow::verifyTeacherLogin(string user_, string pass_)
     }
     return nullptr;
 }
+
+Student* MainWindow::verifyStudentLogin(string user_, string pass_)
+{
+    Student* target = data->findStudentUser(user_);
+    if (target != nullptr)
+    {
+        if (target->verifyPassword(pass_)) return target;
+        else return nullptr;
+    }
+    return nullptr;
+}
+
+
 

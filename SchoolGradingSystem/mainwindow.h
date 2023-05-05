@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include "student.h"
 #include "course.h"
-#include "studentwindow.h"
 #include "datatest.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,11 +26,12 @@ private:
     Ui::MainWindow *ui;
     DataTest *data;
 
-    StudentWindow* studentwindow;
+
     bool submitReady;
     void hideLogin();
     void showLogin();
     Teacher* verifyTeacherLogin(string user_, string pass_);
+    Student* verifyStudentLogin(string user_, string pass_);
 
 
 

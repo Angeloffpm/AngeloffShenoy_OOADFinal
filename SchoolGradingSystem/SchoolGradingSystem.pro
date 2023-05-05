@@ -13,12 +13,13 @@ SOURCES += \
     assignmentfactory.cpp \
     course.cpp \
     datamanager.cpp \
-    data.cpp \
     datatest.cpp \
     gradestablemodel.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
+    studentcourseviewwindow.cpp \
+    studentviewcoursebutton.cpp \
     studentwindow.cpp \
     teacher.cpp \
     teachercourseviewwindow.cpp \
@@ -29,12 +30,13 @@ HEADERS += \
     assignment.h \
     assignmentfactory.h \
     course.h \
-    data.h \
     datamanager.h \
     datatest.h \
     gradestablemodel.h \
     mainwindow.h \
     student.h \
+    studentcourseviewwindow.h \
+    studentviewcoursebutton.h \
     studentwindow.h \
     teacher.h \
     teachercourseviewwindow.h \
@@ -43,6 +45,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    studentcourseviewwindow.ui \
     studentwindow.ui \
     teachercourseviewwindow.ui \
     teacherwindow.ui

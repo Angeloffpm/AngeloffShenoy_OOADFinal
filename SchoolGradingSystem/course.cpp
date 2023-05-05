@@ -34,7 +34,7 @@ void Course::addStudent(Student s) {
 
 void Course::removeStudent(Student s) {
     for (int i = 0; i < students.size(); i++) {
-        if (students[i].getUserID() == s.getUserID()) {
+        if (students[i].getUsername() == s.getUsername()) {
             students.erase(students.begin()+i);
         }
     }
@@ -42,24 +42,6 @@ void Course::removeStudent(Student s) {
 
 void Course::assignTeacher(Teacher *t) { this->teacher = t; }
 
-void Course::printGradesHelper(QWidget* parent) {
-    QVBoxLayout* layout = new QVBoxLayout;
-    QWidget* widget = new QWidget(parent); // Define widget before using it
-
-    for (auto [student, assignment] : assignments) {
-        QString text = QString::fromStdString(student->getName()) +
-                       " | " +
-                       QString::fromStdString(assignment->getTitle()) +
-                       ": " +
-                       QString::number(assignment->getScore(student));
-        QLabel* label = new QLabel(text, widget);
-        layout->addWidget(label);
-    }
-
-    widget->setLayout(layout);
-    layout->addStretch();
-    widget->show();
-}
 
 
 int Course::getStudentGrade(Student s) {

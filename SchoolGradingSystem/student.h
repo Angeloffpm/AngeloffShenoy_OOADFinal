@@ -1,46 +1,38 @@
+
 #ifndef STUDENT_H
 #define STUDENT_H
-#include <QMainWindow>
+
 #include <vector>
-using namespace std;
-#include "assignment.h"
-//#include "course.h"
+#include "course.h"
 
 
-
-
-namespace Ui {
-class Student;
-}
-class Course;
 class Student
 {
-public:
-    Student(int studentID_, vector<Course*> classes_, double gpa_, string password_, string name_);
-    Student();
-    void addClass(Course* c);
-    void removeClass(Course* c);
-    vector<Course*> getClasses();
-    int getGrade(Course c);
-    bool verifyLogin(int id, string pass);
-    int getUserID();
-    string getName();
-    string getPassword();
-    bool inClass(Course* c);
 
-    void exit();
+    public:
 
-private:
+        Student();
+        Student(string name, string username, string password);
 
+        // Getters
+        int getID();
+        string getName();
+        string getUsername();
+        vector<Course*> getCourses();
 
-    int studentID;
-    vector<Course*> classes;
-    vector<Assignment*> assignments;
-    double gpa;
-    string password;
-    string name;
+        bool verifyPassword(string pass_);
 
+        void assignCourse(Course* c);
 
+    private:
+
+        static int currentID;
+
+        int id;
+        string name;
+        string username;
+        string password;
+        vector<Course*> courses;
 
 };
 

@@ -1,74 +1,33 @@
-#include "course.h"
+
 #include "student.h"
 
-Student::Student(int studentID_, vector<Course*> classes_, double gpa_, string password_, string name_) {
+int Student::currentID = 0;
 
-    studentID = studentID_;
-    classes = classes_;
-    gpa = gpa_;
-    password = password_;
-    name = name_;
-
+Student::Student()
+{
+    this->name = "Daniel Green";
+    this->courses = vector<Course*>();
 }
 
-Student::Student() {
-
-
+Student::Student(string name, string username, string password)
+{
+    this->name = name;
+    this->username = username;
+    this->password = password;
+    this->id = currentID;
+    currentID += 1;
 }
 
-void Student::addClass(Course* c) {
+string Student::getName() { return this->name; }
+string Student::getUsername() { return this->username; }
+vector<Course*> Student::getCourses() { return this->courses; }
 
-    classes.push_back(c);
-
-}
-void Student::removeClass(Course* c) {
-
-    for (int i = 0; i < classes.size(); i++) {
-
-        if (classes[i]->getClassID() == c->getClassID()) {
-
-            classes.erase(classes.begin()+i);
-
-        }
-    }
-}
-vector<Course*> Student::getClasses() {
-
-    return classes;
-
-}
-//int Student::getGrade(Course c) {
-
-
-//}
-bool Student::verifyLogin(int id, string pass) {
-
-    if (id == studentID && pass == password) {return true;}
-    else {return false;}
-
-}
-int Student::getUserID() {
-    return studentID;
-}
-string Student::getName() {
-
-    return name;
-}
-string Student::getPassword() {
-    return password;
+bool Student::verifyPassword(string pass_)
+{
+    return (pass_ == this->password);
 }
 
-bool Student::inClass(Course* c) {
-
-    for (int i = 0; i < classes.size(); i++) {
-
-        if (c->getClassID() == classes[i]->getClassID()) {
-
-            return true;
-
-        }
-
-    }
-
-    return false;
+void Student::assignCourse(Course* c)
+{
+    this->courses.push_back(c);
 }

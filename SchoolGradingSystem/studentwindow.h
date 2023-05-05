@@ -3,51 +3,31 @@
 
 #include <QMainWindow>
 #include "student.h"
-#include "course.h"
-#include "datatest.h"
-#include <QVBoxLayout>
-#include <QLabel>
+#include <QWidget>
 #include <QPushButton>
-#include <QTextEdit>
-#include <QLineEdit>
-#include <QDialogButtonBox>
-#include <QDialog>
-#include <QTimer>
-#include <vector>
-
-
+#include "studentviewcoursebutton.h"
+#include "studentcourseviewwindow.h"
 
 namespace Ui {
 class StudentWindow;
 }
-class DataTest;
+
 class StudentWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit StudentWindow(QWidget *parent = nullptr);
+    explicit StudentWindow(QWidget *parent = nullptr, Student *s = nullptr);
     ~StudentWindow();
-    void showMenu();
-    void setCourses(vector<Course*> c);
-    void openCourseGrades(Course* s);
-    void addClassDialog();
-    void updateMenu();
-    void removeClassDialog();
 
+public slots:
+    void courseButton(Course* c);
 
 private:
     Ui::StudentWindow *ui;
-    vector<Course*> courses;
-    vector<Student*> students;
-    QPushButton* addNewClass;
-    QPushButton* removeNewClass;
-    QDialog* courseGradesWindow;
-    DataTest* ds;
-    QDialog* menuDialog;
-    QDialog* addCourseDialog;
-    QDialog* removeCourseDialog;
-
+    Student *student;
+    void displayCourses();
+    vector<studentviewcoursebutton*> courseButtons;
 };
 
-#endif // STUDENTWINDOW_H
+#endif // TEACHERWINDOW_H

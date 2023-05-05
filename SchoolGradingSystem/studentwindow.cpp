@@ -1,5 +1,6 @@
 #include "studentwindow.h"
 #include "ui_studentwindow.h"
+#include "studentcourseviewwindow.h"
 
 StudentWindow::StudentWindow(QWidget *parent, Student *s) :
     QMainWindow(parent),
@@ -38,7 +39,7 @@ void StudentWindow::displayCourses()
 void StudentWindow::courseButton(Course *c)
 {
     qDebug() << QString::fromStdString(c->getClassName());
-    studentcourseviewwindow* courseWindow = new studentcourseviewwindow(nullptr, c);
+    studentcourseviewwindow* courseWindow = new studentcourseviewwindow(nullptr, c, student, this);
     this->hide();
     courseWindow->show();
 }

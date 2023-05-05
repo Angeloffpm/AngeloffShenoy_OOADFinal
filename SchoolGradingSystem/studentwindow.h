@@ -6,12 +6,13 @@
 #include <QWidget>
 #include <QPushButton>
 #include "studentviewcoursebutton.h"
-#include "studentcourseviewwindow.h"
+
 
 namespace Ui {
 class StudentWindow;
 }
 
+class studentcourseviewwindow;
 class StudentWindow : public QMainWindow
 {
     Q_OBJECT

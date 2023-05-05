@@ -13,16 +13,13 @@ void Assignment::inputScore(Student* student, int score) {
 
 }
 
-int Assignment::getScore(Student* student) const {
+int Assignment::getScore(Student* student) {
 
-    auto found = scores.find(student);
-
-    if (found != scores.end()) {return found->second;}
-    else {return NULL;}
+    return scores[student];
 
 }
 
- map<Student*, int> Assignment::getAllScores() {
+map<Student*, int> Assignment::getAllScores() {
 
     return scores;
 

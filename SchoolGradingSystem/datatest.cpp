@@ -24,9 +24,13 @@ DataTest::DataTest()
     AssignmentFactory aFactory = AssignmentFactory();
     Exam* testExam1 = aFactory.createExam("Test Exam 1");
     testExam1->inputScore(students[0], 80);
-    testExam1->inputScore(students[1], 120);
+    testExam1->inputScore(students[1], 75);
     Homework* testHW1 = aFactory.createHomework("Test Homework 1");
+    testHW1->inputScore(students[0], 95);
+    testHW1->inputScore(students[1], 100);
     Quiz* testQuiz1 = aFactory.createQuiz("Test Quiz 1");
+    testQuiz1->inputScore(students[0], 87);
+    testQuiz1->inputScore(students[1], 91);
     course1->addAssignment(testExam1);
     course1->addAssignment(testHW1);
     course1->addAssignment(testQuiz1);

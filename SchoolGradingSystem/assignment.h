@@ -16,7 +16,7 @@ class Assignment
         Assignment(string name, int totalPoints);
         
         void inputScore(Student* student, int score);
-        int getScore(Student* student) const;
+        int getScore(Student* student);
         map<Student*, int> getAllScores();
         void updateScore(Student* student, int score); // *update* i thought this was a good idea, so i kept and implemented it
         int getWeight();

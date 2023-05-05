@@ -2,13 +2,15 @@
 #include "qdialog.h"
 #include "QTableView"
 #include "qlineedit.h"
+#include "teacherwindow.h"
 #include "ui_teachercourseviewwindow.h"
 #include "assignmentfactory.h"
 
-teacherCourseViewWindow::teacherCourseViewWindow(QWidget *parent, Course* course_) :
+teacherCourseViewWindow::teacherCourseViewWindow(QWidget *parent, Course* course_, TeacherWindow* teacherWindow_) :
     QMainWindow(parent),
     course(course_),
-    ui(new Ui::teacherCourseViewWindow)
+    ui(new Ui::teacherCourseViewWindow),
+    teacherWindow(teacherWindow_)
 {
     ui->setupUi(this);
     ui->courseNameLabel->setText(QString::fromStdString(course->getClassName()));
@@ -122,3 +124,10 @@ void teacherCourseViewWindow::updateAssignmentList()
         i += 110;
     }
 }
+
+void teacherCourseViewWindow::on_exitButton_clicked()
+{
+    this->close();
+    teacherWindow->show();
+}
+

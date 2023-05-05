@@ -38,7 +38,7 @@ void TeacherWindow::displayCourses()
 void TeacherWindow::courseButton(Course *c)
 {
     qDebug() << QString::fromStdString(c->getClassName());
-    teacherCourseViewWindow* courseWindow = new teacherCourseViewWindow(nullptr, c);
+    teacherCourseViewWindow* courseWindow = new teacherCourseViewWindow(nullptr, c, this);
     this->hide();
     courseWindow->show();
 }

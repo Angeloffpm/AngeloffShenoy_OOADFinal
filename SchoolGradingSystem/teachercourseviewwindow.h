@@ -10,16 +10,19 @@ namespace Ui {
 class teacherCourseViewWindow;
 }
 
+class TeacherWindow;
 class teacherCourseViewWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit teacherCourseViewWindow(QWidget *parent = nullptr, Course* course_ = nullptr);
+    explicit teacherCourseViewWindow(QWidget *parent = nullptr, Course* course_ = nullptr, TeacherWindow* teacherWindow_ = nullptr);
     ~teacherCourseViewWindow();
 
 private slots:
     void on_newAssignmentButton_clicked();
+
+    void on_exitButton_clicked();
 
 private:
     Course* course;
@@ -28,6 +31,8 @@ private:
 
     void drawAssignment(Assignment *a, int x, int y);
     void updateAssignmentList();
+
+    TeacherWindow* teacherWindow;
 };
 
 #endif // TEACHERCOURSEVIEWWINDOW_H
